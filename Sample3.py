@@ -1,0 +1,1 @@
+list =[['motor',12]['person',100],['person',50]]
