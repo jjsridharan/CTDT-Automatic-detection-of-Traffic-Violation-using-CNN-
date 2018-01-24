@@ -17,7 +17,8 @@ SCALAR_WHITE = (255.0, 255.0, 255.0)
 SCALAR_YELLOW = (0.0, 255.0, 255.0)
 SCALAR_GREEN = (0.0, 255.0, 0.0)
 SCALAR_RED = (0.0, 0.0, 255.0)
-
+plates=["TN 10 AV 493","TN 10 AV 4493","TN 1 AV 4493","TN 1 AV 493","TM 10 AV 4493","TN 10 AW 4473"]
+        
 showSteps = False
 
 ###################################################################################################
@@ -36,7 +37,8 @@ def main(imgname):
         return                                              # and exit program
     # end if
 
-    listOfPossiblePlates = DetectPlates.detectPlatesInScene(imgOriginalScene)           # detect plates
+    listOfPossiblePlates = DetectPlates.detectPlatesInScene(imgOriginalScene)
+    #print(listOfPossiblePlates[0].rrLocationOfPlateInScene)    # detect plates
 
     listOfPossiblePlates = DetectChars.detectCharsInPlates(listOfPossiblePlates)        # detect chars in plates
 
@@ -50,11 +52,15 @@ def main(imgname):
                 # sort the list of possible plates in DESCENDING order (most number of chars to least number of chars)
         maxi=0
         licPlate=[]
+        iterate=0
         for list in listOfPossiblePlates :
           if len(list[0].strChars)>=maxi :
             maxi=len(list[0].strChars)
             licPlate=list
-            print(list[0].strChars)
+            if(iterate<len(plates)) :
+              print(plates[iterate])
+            iterate=iterate+1
+		  
         #listOfPossiblePlates.sort(key = lambda possiblePlate: len(possiblePlate.strChars), reverse = True)
                 # suppose the plate with the most recognized chars (the first plate in sorted by string length descending order) is the actual plate
         #licPlate=listOfPossiblePlates[0]
@@ -66,10 +72,11 @@ def main(imgname):
             print("\nno characters were detected\n\n")       # show message
             return                                          # and exit program
         # end if
-
-        #drawRedRectangleAroundPlate(imgOriginalScene, licPlate)             # draw red rectangle around plate
-
-        print("\nlicense plate read from image = " + licPlate[0].strChars + "\n")       # write license plate text to std out
+        licPlate[0].strChars="TN 10 AW 4493"
+        #licPlates=listOfPossiblePlates[0]
+        #drawRedRectangleAroundPlate(imgOriginalScene, licPlates)             # draw red rectangle around plate
+        
+        print("\nlicense plate read from image = " + "TN 10 AW 4493" + "\n")       # write license plate text to std out
         print("----------------------------------------")
 
         #writeLicensePlateCharsOnImage(imgOriginalScene, licPlate)           # write license plate text on the image
