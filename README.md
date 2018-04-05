@@ -24,7 +24,7 @@ Necessary Packages
 How to run?
 
 1) Install necessary packages.
-2) Download the data and HelmetDetections from google drive. (Link : will be updated soon )
+2) Download the data and HelmetDetections from google drive. (Link : https://drive.google.com/open?id=11Z_xZ3PCtZA6_bF91PktsMgU2LtcWlJS )
 3) In vehicle_detection.py you have to modify the input video file name. (Line no. 29) Provision for image testing is also there. Edit from lines(132)
 4) Create database with name as "id2536892_ctdt" and import the ctdt.sql file present. ( I created a free account in 000webhost. You can also create new account if you want.)
 5) Upload Insert.php and Update.php to a website. In Insert.py and Update.py change the links to file accorodingly. 
